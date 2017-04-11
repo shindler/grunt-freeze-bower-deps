@@ -1,0 +1,10 @@
+This task freezes front-end dependencies to be independent of bower/github etc.... but what does this mean?
+
+- it scans bower output directory for downloaded dependencies
+- then it compares version of downloaded dependencies vs already frozen dependencies
+- if an already frozen version of given dependency is found it prompts to confirm the update
+- if `keepVendorsFolderOnUpdate` is set to false it removes given dependency folder
+- then all files defined as `main` in bower.json (-exclude(d)Files, +include(d)Files) are copied to `vendorsFolder` to be frozen inside project git repo
+
+WARNING:
+THIS TASK SHOULDN'T BE USED ON PRODUCTION OR CI SERVER! IT'S ONLY INTENTED TO BE USED BY A DEVELOPER
